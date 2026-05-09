@@ -13,7 +13,7 @@ go test ./...
 
 ## CI And Releases
 
-Pull requests to `main` run formatting checks, unit tests, and a provider build through GitHub Actions. Merges to `main` automatically create the next semantic version tag, then publish with GoReleaser, signed SHA256 checksums, and GitHub Releases so the Terraform Registry can discover them.
+Pull requests to `main` run formatting checks, unit tests, vulnerability checks, and a provider build through GitHub Actions. Releases are intentionally manual for public repository safety: push a signed or reviewed version tag such as `v0.1.0`, then the release workflow publishes with GoReleaser, signed SHA256 checksums, and GitHub Releases so the Terraform Registry can discover them.
 
 See [PUBLISHING.md](PUBLISHING.md) for the required GitHub secrets and release process.
 
