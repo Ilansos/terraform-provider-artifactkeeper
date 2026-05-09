@@ -10,38 +10,30 @@ The CI workflow:
 
 - checks Go formatting,
 - downloads modules,
+- runs `go vet ./...`,
 - runs `go test ./...`,
-- builds the provider binary.
+- builds the provider binary,
+- runs `govulncheck ./...`.
 
 It does not publish anything.
 
 ## Release Flow
 
-Releases are created automatically when changes are merged to `main`.
+Releases are created manually by pushing a semantic version tag:
+
+```bash
+git tag v0.1.0
+git push origin v0.1.0
+```
 
 The release workflow:
 
 - runs `go test ./...`,
-- finds the latest `vMAJOR.MINOR.PATCH` tag,
-- computes the next version,
-- creates and pushes the new tag on the merge commit,
 - builds cross-platform ZIP artifacts with GoReleaser,
 - signs the checksum file with GPG,
 - creates a GitHub Release.
 
 The Terraform Registry discovers provider versions from those GitHub Releases.
-
-## Version Bumping
-
-The release workflow supports automatic semantic version bumps from commit messages since the last release tag:
-
-- `major`: any commit message containing `BREAKING CHANGE` or a Conventional Commit breaking marker such as `feat!:`.
-- `minor`: any commit message starting with `feat:` or `feat(scope):`.
-- `patch`: all other changes.
-
-If there are no existing release tags, the workflow starts from `v0.0.0`, so the first patch release is `v0.0.1`.
-
-You can also run the release workflow manually from GitHub Actions and choose `patch`, `minor`, or `major` with the `workflow_dispatch` input.
 
 ## Required GitHub Secrets
 
