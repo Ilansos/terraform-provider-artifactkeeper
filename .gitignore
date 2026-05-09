@@ -1,0 +1,5 @@
+dist/
+terraform-provider-artifactkeeper
+testing-provider/*
+.agents/
+.codex/
