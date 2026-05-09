@@ -62,9 +62,6 @@ signs:
       - "${artifact}"
 
 release:
-  github:
-    owner: artifactkeeper
-    name: terraform-provider-artifactkeeper
   draft: false
   prerelease: auto
   extra_files:
