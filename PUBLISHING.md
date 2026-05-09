@@ -22,7 +22,14 @@ It does not publish anything.
 Releases are created manually by pushing a semantic version tag:
 
 ```bash
-git tag v0.1.0
+git tag -s v0.1.0 -m "v0.1.0"
+git push origin v0.1.0
+```
+
+You can also tag the merge commit explicitly by SHA:
+
+```bash
+git tag -s v0.1.0 <merge_commit_sha> -m "v0.1.0"
 git push origin v0.1.0
 ```
 
